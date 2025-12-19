@@ -1,0 +1,190 @@
+\documentclass[10pt]{article}
+
+\usepackage{MathCloze}
+
+% some user macros:
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\PP}{\mathsf{Pr}}
+
+% use \def instead of \renewcommand
+\def\phi{\varphi}
+
+% DeclareMathOperator should also work
+\DeclareMathOperator{\Mat}{Mat}
+   
+\begin{document}
+
+% field order
+% 1. Title
+% 2. Front side content
+% 3. Back side content
+% 4. Topic
+% 5. Type
+% 6. Note number
+
+\begin{note}{itsl-401}
+  \field\ Generative models for classification %title
+  \field\ Suppose \(Y\) can take on \(K\) distinct class values. 
+  Let \(\pi_k\) represent the overall (prior) probability that a randomly chosen observation comes from the \(k^\text{th}\) class.
+  Let \(f_k(X) := \text{Pr}(X | Y = k)\) denote the density function of \(X\) for an observation that comes from the \(k^\text{th}\) class. Then, the Bayes' theorem states
+  \cloze{1}
+  \[
+		  p_k(x) = \PP(Y = k | X = x)
+					= \frac{\pi_k f_k(x)}{\sum_{l = 1}^K \pi_l f_l(x)}.
+		  \]
+  \clend\
+  \field\ %back
+  \field\ Classification %topic
+  \field\ %type
+  \field\ %note number
+\end{note}
+
+\begin{note}{itsl-402}
+  \field\ Linear discrimination analysis for \(p = 1\)%title
+  \field\ It is assumed that \(f_k(x) := \PP(X = x| Y = k)\) is normal. In the one-dimensional setting, the normal density takes the form
+		  \cloze{1}
+		  \[
+				  f_k(x) = \frac{1}{\sqrt{2\pi\sigma_k^2}}
+				  \exp\Bigl(-\frac{1}{2\sigma_k^2} (x - \mu_k)^2 \Bigr),
+				  \]
+		  \clend\
+		  where \(\mu_k\) and \(\sigma_k^2\) are the \cloze{1}mean and variance parameters for the \(k^\text{th}\) class.\clend
+  \field\ %back
+  \field\ Classification%topic
+  \field\ %type
+  \field\ %note number
+\end{note}
+
+\begin{note}{itsl-403}
+  \field\ Linear discrimination analysis for \(p = 1\)%title
+  \field\ The Bayes Classifier involves \cloze{1}assigning an observation \(X = x\) to the class for which \(p_k(x)\) is largest\clend{}. Assuming \(f_k(x)\) is normal and that there is a shared variance term across all \(K\) classes, this is equivalent to assigning the observation to the class for which
+ \cloze{2}
+ \[
+		 \delta_k(x) = x \cdot \frac{\mu_k}{\sigma^2} - \frac{\mu_k^2}{\sigma^2} + \log \pi_k,
+		 \]
+\clend\ is largest.%front
+  \field\ %back
+  \field\ Classification%topic
+\end{note}
+
+\begin{note}{itsl-404}
+  \field\ Linear discrimination analysis for \(p = 1\)%title
+  \field\ The linear discriminant analysis (LDA) method approximates the Bayes classifier by using estimates for \(\hat \pi_k, \, \hat \mu_k\) and \(\hat \sigma^2\), given by,\\
+  \cloze{1}
+  \[
+  \begin{aligned}
+		\hat \mu_k &= \frac{1}{n_k} \sum_{i:y_i = k} x_i\\
+		\hat \sigma^2 &= \frac{1}{n - K} \sum_{k = 1}^K \sum_{i:y_i = k} (x_i - \hat \mu_k)^2\\
+		\hat \pi_k &= \frac{n_k}{n},
+  \end{aligned}
+  \]
+  \clend\ \\ where \(n\) is the total number of training observations and \(n_k\) is the number in the \(k^\text{th}\) class.
+  \field\ %back
+  \field\ Classification%topic
+\end{note}
+
+\begin{note}{itsl-405}
+  \field\ Linear discrimination analysis for \(p = 1\)%title
+  \field\ The LDA classifier results from assuming that the observations \cloze{1}within each class come from a normal distribution\clend\ with a \cloze{2}class specific mean and common variance \(\sigma^2\)\clend{}, and plugging esimates for those parameters into the \cloze{3}Bayes classifier\clend{}.
+  \field\ %back
+  \field\ Classification%topic
+\end{note}
+
+\begin{note}{itsl-406}
+  \field\ Classification and diagnostic testing
+  \field\
+\begin{tabular}{p{2.3cm}lp{4cm}}
+		False positive rate & \cloze{1} FP / N \clend& \cloze{1} Type I error, 1 - Specificity \clend\\
+		True positive rate & \cloze{1} TP / P \clend& \cloze{1} 1 - Type II Error, power, sensitivity, recall \clend\\
+		Positive predictive value & \cloze{1} TP / \(\hat{\text{P}}\) \clend& \cloze{1} Precision, 1 - false discovery proportion \clend\\
+		Negative predictive value & \cloze{1} TN / \(\hat{\text{N}}\) \clend&\\
+\end{tabular}
+  \field\ %back
+  \field\ Classification%topic
+\end{note}
+
+\begin{note}{itsl-407}
+  \field\ Quadratic discriminant analysis
+  \field\ What is the difference between QDA and LDA?
+
+  QDA assumes that an observation from the \(k^\text{th}\) class is of the form
+ \cloze{1}\(X \sim \mathcal{N}(\mu_k, \Sigma_k)\)\clend{}, where \cloze{1}\(\Sigma_k\) is a covariance matrix for the \(k^\text{th}\) class\clend{}. LDA assumes that all observations \cloze{1}share a common covariance matrix \(\Sigma\)\clend{}.
+  \field\ 
+  \field\ Classification%topic
+  \field\ %type
+  \field\ %note number
+\end{note}
+
+\begin{note}{itsl-408}
+  \field\ Naive Bayes%title
+  \field\ The naive Bayes classifier makes the assumption that,
+  \cloze{1}
+		\begin{center}
+		\par Within the \(k^\text{th}\) class, the \(p\) predictors are independent.
+		\end{center}
+  \clend\
+  Mathematically, this assumption means,
+  \cloze{2}
+  \[
+		  f_k(x) = f_{k1}(x_1) \times f_{k2} x_2 \times \cdots \times f_{kp}(x_p),
+		  \]
+  \clend\
+  where \cloze{2}\(f_{kj}\) is the density function of the \(j^\text{th}\) predictor among observations in the \(k^\text{th}\) class\clend{}.
+  \field\ %back
+  \field\ Classification%topic
+  \field\ %type
+  \field\ %note number
+\end{note}
+
+\begin{note}{itsl-409}
+  \field\ Naive Bayes%title
+  \field\ With the naive Bayes assumption (that the \(p\) covariates are independent within each class), and using Bayes theorem, we get posterior probability,
+  \cloze{1}
+  \[
+		  \PP(Y = k | X = x) 
+		= \frac{\pi_k \times f_{k1}(x_1) \times \cdots \times f_{kp}(x_p)
+		}{\sum_{l = 1}^K \pi_l \times f_{l1}(x_1) \times \cdots \times f_{lp}(x_p)},
+		  \]
+  \clend\
+  for \(k = 1, \ldots, K\).
+  \field\ %back
+  \field\ Classification%topic
+\end{note}
+
+\begin{note}{itsl-410}
+  \field\ Naive Bayes%title
+  \field\ Three options to estimate the one-dimensional density function \(f_{kj}\) using training data \(x_{1j}, \ldots, x_{pj}\) are, 
+  \begin{center}
+  \begin{itemize}
+  \item \(X_j\) quantitative:
+  \cloze{1}
+		  \begin{itemize}
+		  \item Can assume \(X_j | Y \sim \mathcal{N}(\mu_{jk}, \sigma_{jk}^2)\) (this is QDA with an additional assumption that the class-specific covariance matrix is diagonal);
+		  \item Non-parametric estimate using the histogram or kernel density function.
+		  \end{itemize}
+  \clend\
+  \item \(X_j\) qualitative: \cloze{2}count the proportion of training observations for the \(j^\text{th}\) predictor corresponding to each class\clend{}.
+  \end{itemize}
+  \end{center}
+  \field\ %back
+  \field\ Classification%topic
+\end{note}
+
+\begin{note}{itsl-411}
+  \field\ KNN vs LDA and QDA%title
+  \field\ 
+  \begin{center}
+  \begin{itemize}
+  \item KNN is \cloze{1}non-parametric\clend\ and therefore we expect it to dominate LDA and logistic regression when \cloze{1}the decision boundary is highly non-linear, provided \(n\) is large and \(p\) is small\clend{}.
+  \item Where the decision boundary is non-lienar but \(n\) is modest or \(p\) is not very small, then \cloze{2}QDA may be preferred to KNN\clend{}. This is because \cloze{2}QDA can prove a non-linear decision boundary while taking advantage of a parametric form\clend{}.
+  \item Unlike logistic regression, KNN does not \cloze{3}tell us which predictors are important\clend{}.
+  \end{itemize}
+  \end{center}
+  \field\ %back
+  \field\ Classification%topic
+\end{note}
+
+\end{document}
+

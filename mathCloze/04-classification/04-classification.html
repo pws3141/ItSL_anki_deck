@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  MathJax = { 
+    tex: {
+		    inlineMath: [['\\(','\\)']]
+	} }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<meta name="generator" content="plasTeX" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="styles/MathCloze.css" />
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<div class="content">
+<div class="content-wrapper">
+
+
+<div class="main-text">
+<p><div class="note">
+     <div class="uuid">itsl-401</div>
+      ((FIELDSEPARATOR))  Generative models for classification  ((FIELDSEPARATOR))  Suppose \(Y\) can take on \(K\) distinct class values. Let \(\pi _k\) represent the overall (prior) probability that a randomly chosen observation comes from the \(k^\text {th}\) class. Let \(f_k(X) := \text{Pr}(X | Y = k)\) denote the density function of \(X\) for an observation that comes from the \(k^\text {th}\) class. Then, the Bayes’ theorem states ((CLOZE1)) <div class="displaymath" id="a0000000002">
+  \[  p_k(x) = \mathsf{Pr}(Y = k | X = x) = \frac{\pi _k f_k(x)}{\sum _{l = 1}^K \pi _l f_l(x)}.  \]
+</div> ((CLEND))  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Classification  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  
+</div> </p>
+<p><div class="note">
+     <div class="uuid">itsl-402</div>
+      ((FIELDSEPARATOR))  Linear discrimination analysis for \(p = 1\) ((FIELDSEPARATOR))  It is assumed that \(f_k(x) := \mathsf{Pr}(X = x| Y = k)\) is normal. In the one-dimensional setting, the normal density takes the form ((CLOZE1)) <div class="displaymath" id="a0000000003">
+  \[  f_k(x) = \frac{1}{\sqrt{2\pi \sigma _k^2}} \exp \Bigl(-\frac{1}{2\sigma _k^2} (x - \mu _k)^2 \Bigr),  \]
+</div> ((CLEND)) where \(\mu _k\) and \(\sigma _k^2\) are the ((CLOZE1))mean and variance parameters for the \(k^\text {th}\) class.((CLEND)) ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Classification ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  
+</div> </p>
+<p><div class="note">
+     <div class="uuid">itsl-403</div>
+      ((FIELDSEPARATOR))  Linear discrimination analysis for \(p = 1\) ((FIELDSEPARATOR))  The Bayes Classifier involves ((CLOZE1))assigning an observation \(X = x\) to the class for which \(p_k(x)\) is largest((CLEND)). Assuming \(f_k(x)\) is normal and that there is a shared variance term across all \(K\) classes, this is equivalent to assigning the observation to the class for which ((CLOZE2)) <div class="displaymath" id="a0000000004">
+  \[  \delta _k(x) = x \cdot \frac{\mu _k}{\sigma ^2} - \frac{\mu _k^2}{\sigma ^2} + \log \pi _k,  \]
+</div> ((CLEND)) is largest. ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Classification
+</div> </p>
+<p><div class="note">
+     <div class="uuid">itsl-404</div>
+      ((FIELDSEPARATOR))  Linear discrimination analysis for \(p = 1\) ((FIELDSEPARATOR))  The linear discriminant analysis (LDA) method approximates the Bayes classifier by using estimates for \(\hat\pi _k, \,  \hat\mu _k\) and \(\hat\sigma ^2\), given by,<br />((CLOZE1)) <div class="displaymath" id="a0000000005">
+  \[  \begin{aligned}  \hat\mu _k & = \frac{1}{n_k} \sum _{i:y_i = k} x_i\\ \hat\sigma ^2 & = \frac{1}{n - K} \sum _{k = 1}^K \sum _{i:y_i = k} (x_i - \hat\mu _k)^2\\ \hat\pi _k & = \frac{n_k}{n}, \end{aligned}  \]
+</div> ((CLEND)) <br />where \(n\) is the total number of training observations and \(n_k\) is the number in the \(k^\text {th}\) class.  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Classification
+</div> </p>
+<p><div class="note">
+     <div class="uuid">itsl-405</div>
+      ((FIELDSEPARATOR))  Linear discrimination analysis for \(p = 1\) ((FIELDSEPARATOR))  The LDA classifier results from assuming that the observations ((CLOZE1))within each class come from a normal distribution((CLEND)) with a ((CLOZE2))class specific mean and common variance \(\sigma ^2\)((CLEND)), and plugging esimates for those parameters into the ((CLOZE3))Bayes classifier((CLEND)).  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Classification
+</div> </p>
+<p><div class="note">
+     <div class="uuid">itsl-406</div>
+      ((FIELDSEPARATOR))  Classification and diagnostic testing  ((FIELDSEPARATOR))  <table class="tabular">
+  <tr>
+    <td  style="text-align:left" 
+        rowspan=""
+        colspan="">
+      <p> False positive rate </p>
+
+    </td>
+    <td  style="text-align:left" 
+        rowspan=""
+        colspan="">
+      <p> ((CLOZE1)) FP / N ((CLEND))</p>
+
+    </td>
+    <td  style="text-align:left" 
+        rowspan=""
+        colspan="">
+      <p> ((CLOZE1)) Type I error, 1 - Specificity ((CLEND))</p>
+
+    </td>
+  </tr>
+  <tr>
+    <td  style="text-align:left" 
+        rowspan=""
+        colspan="">
+      <p>True positive rate </p>
+
+    </td>
+    <td  style="text-align:left" 
+        rowspan=""
+        colspan="">
+      <p> ((CLOZE1)) TP / P ((CLEND))</p>
+
+    </td>
+    <td  style="text-align:left" 
+        rowspan=""
+        colspan="">
+      <p> ((CLOZE1)) 1 - Type II Error, power, sensitivity, recall ((CLEND))</p>
+
+    </td>
+  </tr>
+  <tr>
+    <td  style="text-align:left" 
+        rowspan=""
+        colspan="">
+      <p>Positive predictive value </p>
+
+    </td>
+    <td  style="text-align:left" 
+        rowspan=""
+        colspan="">
+      <p> ((CLOZE1)) TP / \(\hat{\text{P}}\) ((CLEND))</p>
+
+    </td>
+    <td  style="text-align:left" 
+        rowspan=""
+        colspan="">
+      <p> ((CLOZE1)) Precision, 1 - false discovery proportion ((CLEND))</p>
+
+    </td>
+  </tr>
+  <tr>
+    <td  style="text-align:left" 
+        rowspan=""
+        colspan="">
+      <p>Negative predictive value </p>
+
+    </td>
+    <td  style="text-align:left" 
+        rowspan=""
+        colspan="">
+      <p> ((CLOZE1)) TN / \(\hat{\text{N}}\) ((CLEND))</p>
+
+    </td>
+    <td  style="text-align:left" 
+        rowspan=""
+        colspan="">&nbsp;</td>
+  </tr>
+</table>  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Classification
+</div> </p>
+<p><div class="note">
+     <div class="uuid">itsl-407</div>
+     <p> ((FIELDSEPARATOR))  Quadratic discriminant analysis  ((FIELDSEPARATOR))  What is the difference between QDA and LDA? </p>
+<p>QDA assumes that an observation from the \(k^\text {th}\) class is of the form ((CLOZE1))\(X \sim \mathcal{N}(\mu _k, \Sigma _k)\)((CLEND)), where ((CLOZE1))\(\Sigma _k\) is a covariance matrix for the \(k^\text {th}\) class((CLEND)). LDA assumes that all observations ((CLOZE1))share a common covariance matrix \(\Sigma \)((CLEND)).  ((FIELDSEPARATOR))    ((FIELDSEPARATOR))  Classification ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  </p>
+
+</div> </p>
+<p><div class="note">
+     <div class="uuid">itsl-408</div>
+      ((FIELDSEPARATOR))  Naive Bayes ((FIELDSEPARATOR))  The naive Bayes classifier makes the assumption that, ((CLOZE1)) <div class="centered"><p>Within the \(k^\text {th}\) class, the \(p\) predictors are independent. </p>
+</div> ((CLEND)) Mathematically, this assumption means, ((CLOZE2)) <div class="displaymath" id="a0000000006">
+  \[  f_k(x) = f_{k1}(x_1) \times f_{k2} x_2 \times \cdots \times f_{kp}(x_p),  \]
+</div> ((CLEND)) where ((CLOZE2))\(f_{kj}\) is the density function of the \(j^\text {th}\) predictor among observations in the \(k^\text {th}\) class((CLEND)).  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Classification ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  
+</div> </p>
+<p><div class="note">
+     <div class="uuid">itsl-409</div>
+      ((FIELDSEPARATOR))  Naive Bayes ((FIELDSEPARATOR))  With the naive Bayes assumption (that the \(p\) covariates are independent within each class), and using Bayes theorem, we get posterior probability, ((CLOZE1)) <div class="displaymath" id="a0000000007">
+  \[  \mathsf{Pr}(Y = k | X = x) = \frac{\pi _k \times f_{k1}(x_1) \times \cdots \times f_{kp}(x_p) }{\sum _{l = 1}^K \pi _l \times f_{l1}(x_1) \times \cdots \times f_{lp}(x_p)},  \]
+</div> ((CLEND)) for \(k = 1, \ldots , K\).  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Classification
+</div> </p>
+<p><div class="note">
+     <div class="uuid">itsl-410</div>
+      ((FIELDSEPARATOR))  Naive Bayes ((FIELDSEPARATOR))  Three options to estimate the one-dimensional density function \(f_{kj}\) using training data \(x_{1j}, \ldots , x_{pj}\) are, <div class="centered"> <ul class="itemize">
+  <li><p>\(X_j\) quantitative: ((CLOZE1)) </p>
+<ul class="itemize">
+  <li><p>Can assume \(X_j | Y \sim \mathcal{N}(\mu _{jk}, \sigma _{jk}^2)\) (this is QDA with an additional assumption that the class-specific covariance matrix is diagonal); </p>
+</li>
+  <li><p>Non-parametric estimate using the histogram or kernel density function. </p>
+</li>
+</ul>
+<p> ((CLEND)) </p>
+</li>
+  <li><p>\(X_j\) qualitative: ((CLOZE2))count the proportion of training observations for the \(j^\text {th}\) predictor corresponding to each class((CLEND)). </p>
+</li>
+</ul> </div>  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Classification
+</div> </p>
+<p><div class="note">
+     <div class="uuid">itsl-411</div>
+      ((FIELDSEPARATOR))  KNN vs LDA and QDA ((FIELDSEPARATOR))   <div class="centered"> <ul class="itemize">
+  <li><p>KNN is ((CLOZE1))non-parametric((CLEND)) and therefore we expect it to dominate LDA and logistic regression when ((CLOZE1))the decision boundary is highly non-linear, provided \(n\) is large and \(p\) is small((CLEND)). </p>
+</li>
+  <li><p>Where the decision boundary is non-lienar but \(n\) is modest or \(p\) is not very small, then ((CLOZE2))QDA may be preferred to KNN((CLEND)). This is because ((CLOZE2))QDA can prove a non-linear decision boundary while taking advantage of a parametric form((CLEND)). </p>
+</li>
+  <li><p>Unlike logistic regression, KNN does not ((CLOZE3))tell us which predictors are important((CLEND)). </p>
+</li>
+</ul> </div>  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Classification
+</div> </p>
+
+</div> <!--main-text -->
+</div> <!-- content-wrapper -->
+</div> <!-- content -->
+</div> <!-- wrapper -->
+
+<nav class="prev_up_next">
+</nav>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/plastex.js"></script>
+<script type="text/javascript" src="js/svgxuse.js"></script>
+<script type="text/javascript" src="js/MathCloze.js"></script>
+</body>
+</html>

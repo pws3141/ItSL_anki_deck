@@ -1,0 +1,153 @@
+\documentclass[10pt]{article}
+
+\usepackage{MathCloze}
+
+% some user macros:
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\PP}{\mathsf{Pr}}
+
+% use \def instead of \renewcommand
+\def\phi{\varphi}
+
+% DeclareMathOperator should also work
+\DeclareMathOperator{\Mat}{Mat}
+   
+\begin{document}
+
+% field order
+% 1. Title
+% 2. Front side content
+% 3. Back side content
+% 4. Topic
+% 5. Type
+% 6. Note number
+
+\begin{note}{itsl-501}
+  \field\ The Validation Set Approach%title
+  \field\ 
+  Two potential drawbacks of the validation set approach are:
+  \begin{enumerate}
+          \item \cloze{1}The validation estimate of the test error rate can be highly
+                  variable, dependent on which observations are included in the
+                  training and test sets\clend{};
+          \item \cloze{2}Only a subset of observations (the training set) are used
+                  to train the model. Since statistical methods tend to perform
+                  worse when trained on fewer observations, this suggests that the
+                  validation set error rate may tend to overestimate the test error
+                  rate for the model fit on the entire data set\clend{}.
+  \end{enumerate}
+  \field\ %back
+  \field\ Resampling %topic
+  \field\ %type
+  \field\ %note number
+\end{note}
+
+\begin{note}{itsl-502}
+  \field\ Leave-One-Out Cross-Validation
+        \field\ LOOCV involves leaving a single observations out of the training
+        set, building the model using the remaining observations and calculating the
+        MSE on the test set observation, $\text{MSE}_j$.\\
+        The LOOCV estimate for the test MSE is the \cloze{1} average of the
+        $n$ test error estimates,\clend\
+        \cloze{2}
+  \[
+                CV_{(n)} = \frac{1}{n} \sum_{i = 1}^n \text{MSE}_i.
+        \]
+        \clend\
+  \field\ %back
+  \field\ Resampling %topic
+  \field\ %type
+  \field\ %note number
+\end{note}
+
+\begin{note}{itsl-503}
+  \field\ Leave-One-Out Cross-Validation
+  \field\ With least squares linear or polynomial regression, the cost of LOOCV is
+        the same as a single model fit. The CV formula is,
+        \cloze{1}
+  \[
+                \text{CV}_{(n)} 
+                = \frac{1}{n} \sum_{i = 1}^n \Bigl(\frac{y_i - \hat{y}_i}{1 - h_i}\Bigr)^2,
+        \] \clend\
+        where \cloze{1}$\hat y_i$ is the $i^\text{th}$ fitted value from the
+        original least squares fit\clend{}, and \cloze{1}$h_i$ is the leverage
+        statistic\clend{}.
+  \field\ %back
+  \field\ Resampling %topic
+  \field\ %type
+  \field\ %note number
+\end{note}
+
+\begin{note}{itsl-504}
+  \field\ $k$-fold Cross-Validation
+  \field\ $k$-fold CV involves randomly dividing the set of observations into $k$
+        groups. For each fold $j$, the model is built using the remaining folds, and MSE
+        calculated on the $j^\text{th}$ fold.\\
+        The $k$-fold CV estimate is \cloze{1} computed by averaging the MSE
+        values\clend{},
+        \cloze{1}
+        \[
+                CV_{(k)} = \frac{1}{k} \sum_{i = 1}^k \text{MSE}_i.
+        \]\clend{}
+  \field\ %back
+  \field\ %topic
+  \field\ Resampling %topic
+  \field\ %note number
+\end{note}
+
+\begin{note}{itsl-505}
+  \field\ LOOCV vs. $k$-fold CV%title
+        \field\ LOOCV has \cloze{1} lower bias\clend\ then $k$-folds CV as \cloze{1}
+        more observations are included in the training set\clend{}.\\
+        However, in LOOCV, each model is trained on \cloze{2}an almost identical
+        set of observations, and therefore the outputs are highly (positively)
+        correlated\clend{}. Since the \cloze{2}mean of many highly correlated
+        quantities has higher variance then quantities that are less
+        correlated\clend{}, the test error estimate from LOOCV \cloze{2}tends to
+        have higher variance than that resulting from $k$-folds CV\clend{}.
+  \field\ %back
+  \field\ Resampling%topic
+  \field\ %type
+  \field\ %note number
+\end{note}
+
+\begin{note}{itsl-506}
+  \field\ CV on Classification Problems%title
+  \field\ When $Y$ is qualitative, instead of using \cloze{1}MSE to quantify
+        test error, we use the number of misclassified observations\clend{}.
+        For example, the LOOCV classification error rate takes the form,
+        \cloze{1}
+        \[
+        \text{CV}_{(n)} = \frac{1}{n} \sum_{i = 1}^n \text{Err}_i,
+        \]\clend{}
+        where \cloze{1}$\text{Err}_i = I(y_i \neq \hat y_i)$\clend{}.
+  \field\ %back
+  \field\ Resampling%topic
+  \field\ %type
+  \field\ %note number
+\end{note}
+
+\begin{note}{itsl-507}
+  \field\ The Bootstrap%title
+        \field\ Given $B$ bootstrap data sets, $Z^{*1}, \ldots, Z^{*B}$, and $B$
+        corresponding $\alpha$ estimates, $\hat \alpha^{*1}, \ldots, \hat
+        \alpha^{*B}$, we can compute the standard error of these bootstrap estimates
+        using the formula,
+        \cloze{1}
+        \[
+        \text{SE}_B(\hat \alpha)
+        = \sqrt{\frac{1}{B - 1} \sum_{r = 1}^B
+                \Bigl(\hat{\alpha}^{*r}
+                - \frac{1}{B} \sum_{r' = 1}^B \hat{\alpha}^{*r'}\Bigr)^2}.
+        \]\clend{}
+        This serves as an estimate of \cloze{2} the standard error of $\hat \alpha$
+        estimated from the original data set\clend{}.
+  \field\ %back
+  \field\ Resampling %topic
+  \field\ %type
+  \field\ %note number
+\end{note}
+
+\end{document}

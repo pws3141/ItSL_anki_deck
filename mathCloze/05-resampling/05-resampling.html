@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  MathJax = { 
+    tex: {
+		    inlineMath: [['\\(','\\)']]
+	} }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<meta name="generator" content="plasTeX" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="styles/MathCloze.css" />
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<div class="content">
+<div class="content-wrapper">
+
+
+<div class="main-text">
+<p><div class="note">
+     <div class="uuid">itsl-501</div>
+      ((FIELDSEPARATOR))  The Validation Set Approach ((FIELDSEPARATOR))   Two potential drawbacks of the validation set approach are: <ol class="enumerate">
+  <li><p>((CLOZE1))The validation estimate of the test error rate can be highly variable, dependent on which observations are included in the training and test sets((CLEND)); </p>
+</li>
+  <li><p>((CLOZE2))Only a subset of observations (the training set) are used to train the model. Since statistical methods tend to perform worse when trained on fewer observations, this suggests that the validation set error rate may tend to overestimate the test error rate for the model fit on the entire data set((CLEND)). </p>
+</li>
+</ol>  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Resampling  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  
+</div> </p>
+<p><div class="note">
+     <div class="uuid">itsl-502</div>
+      ((FIELDSEPARATOR))  Leave-One-Out Cross-Validation  ((FIELDSEPARATOR))  LOOCV involves leaving a single observations out of the training set, building the model using the remaining observations and calculating the MSE on the test set observation, \(\text{MSE}_j\).<br />The LOOCV estimate for the test MSE is the ((CLOZE1)) average of the \(n\) test error estimates,((CLEND)) ((CLOZE2)) <div class="displaymath" id="a0000000002">
+  \[  CV_{(n)} = \frac{1}{n} \sum _{i = 1}^n \text{MSE}_i.  \]
+</div> ((CLEND))  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Resampling  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  
+</div> </p>
+<p><div class="note">
+     <div class="uuid">itsl-503</div>
+      ((FIELDSEPARATOR))  Leave-One-Out Cross-Validation  ((FIELDSEPARATOR))  With least squares linear or polynomial regression, the cost of LOOCV is the same as a single model fit. The CV formula is, ((CLOZE1)) <div class="displaymath" id="a0000000003">
+  \[  \text{CV}_{(n)} = \frac{1}{n} \sum _{i = 1}^n \Bigl(\frac{y_i - \hat{y}_i}{1 - h_i}\Bigr)^2,  \]
+</div> ((CLEND)) where ((CLOZE1))\(\hat y_i\) is the \(i^\text {th}\) fitted value from the original least squares fit((CLEND)), and ((CLOZE1))\(h_i\) is the leverage statistic((CLEND)).  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Resampling  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  
+</div> </p>
+<p><div class="note">
+     <div class="uuid">itsl-504</div>
+      ((FIELDSEPARATOR))  \(k\)-fold Cross-Validation  ((FIELDSEPARATOR))  \(k\)-fold CV involves randomly dividing the set of observations into \(k\) groups. For each fold \(j\), the model is built using the remaining folds, and MSE calculated on the \(j^\text {th}\) fold.<br />The \(k\)-fold CV estimate is ((CLOZE1)) computed by averaging the MSE values((CLEND)), ((CLOZE1)) <div class="displaymath" id="a0000000004">
+  \[  CV_{(k)} = \frac{1}{k} \sum _{i = 1}^k \text{MSE}_i.  \]
+</div>((CLEND))  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Resampling  ((FIELDSEPARATOR))  
+</div> </p>
+<p><div class="note">
+     <div class="uuid">itsl-505</div>
+      ((FIELDSEPARATOR))  LOOCV vs. \(k\)-fold CV ((FIELDSEPARATOR))  LOOCV has ((CLOZE1)) lower bias((CLEND)) then \(k\)-folds CV as ((CLOZE1)) more observations are included in the training set((CLEND)).<br />However, in LOOCV, each model is trained on ((CLOZE2))an almost identical set of observations, and therefore the outputs are highly (positively) correlated((CLEND)). Since the ((CLOZE2))mean of many highly correlated quantities has higher variance then quantities that are less correlated((CLEND)), the test error estimate from LOOCV ((CLOZE2))tends to have higher variance than that resulting from \(k\)-folds CV((CLEND)).  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Resampling ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  
+</div> </p>
+<p><div class="note">
+     <div class="uuid">itsl-506</div>
+      ((FIELDSEPARATOR))  CV on Classification Problems ((FIELDSEPARATOR))  When \(Y\) is qualitative, instead of using ((CLOZE1))MSE to quantify test error, we use the number of misclassified observations((CLEND)). For example, the LOOCV classification error rate takes the form, ((CLOZE1)) <div class="displaymath" id="a0000000005">
+  \[  \text{CV}_{(n)} = \frac{1}{n} \sum _{i = 1}^n \text{Err}_i,  \]
+</div>((CLEND)) where ((CLOZE1))\(\text{Err}_i = I(y_i \neq \hat y_i)\)((CLEND)).  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Resampling ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  
+</div> </p>
+<p><div class="note">
+     <div class="uuid">itsl-507</div>
+      ((FIELDSEPARATOR))  The Bootstrap ((FIELDSEPARATOR))  Given \(B\) bootstrap data sets, \(Z^{*1}, \ldots , Z^{*B}\), and \(B\) corresponding \(\alpha \) estimates, \(\hat\alpha ^{*1}, \ldots , \hat\alpha ^{*B}\), we can compute the standard error of these bootstrap estimates using the formula, ((CLOZE1)) <div class="displaymath" id="a0000000006">
+  \[  \text{SE}_B(\hat\alpha ) = \sqrt{\frac{1}{B - 1} \sum _{r = 1}^B \Bigl(\hat{\alpha }^{*r} - \frac{1}{B} \sum _{r' = 1}^B \hat{\alpha }^{*r'}\Bigr)^2}.  \]
+</div>((CLEND)) This serves as an estimate of ((CLOZE2)) the standard error of \(\hat\alpha \) estimated from the original data set((CLEND)).  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Resampling  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  
+</div> </p>
+
+</div> <!--main-text -->
+</div> <!-- content-wrapper -->
+</div> <!-- content -->
+</div> <!-- wrapper -->
+
+<nav class="prev_up_next">
+</nav>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/plastex.js"></script>
+<script type="text/javascript" src="js/svgxuse.js"></script>
+<script type="text/javascript" src="js/MathCloze.js"></script>
+</body>
+</html>

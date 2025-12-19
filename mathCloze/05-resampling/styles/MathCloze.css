@@ -1,0 +1,115 @@
+body {
+font-family: serif;
+line-height: 1.5;
+margin: 2em;
+background: #fafafa;
+}
+
+.note {
+border: 1px solid #ddd;
+border-radius: 10px;
+padding: 1em 1.5em;
+background: white;
+box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+max-width: 600px;
+margin-left:auto;
+margin-right:auto;
+}
+
+.uuid {
+    font-family: monospace;
+    color: gray;
+    font-size: 0.9em;
+    margin-bottom: 0.5em;
+}
+
+.field {
+margin-top: 1em;
+}
+
+/* Field 0 (Title) */
+.field.title {
+font-weight: bold;
+font-size: 1.2em;
+margin-top: 1.5em;
+}
+
+/* Field 1 (Prompt) */
+.field.prompt {
+font-weight: normal;
+}
+
+/* Field 2 (Background info) */
+.field.background::before {
+content: "Back: ";
+font-style: italic;
+}
+
+.field.background{margin-bottom:1em;}
+
+/* Field 3 (Chapter name) */
+.field.chapter {
+    color: gray;
+    display:inline;
+    text-align: right;
+}
+
+/* Field 4 (Def/Satz/Bsp) */
+.field.def::before {
+    color: gray;
+    display:inline;
+    content: " – ";
+}
+.field.def {
+    color: gray;
+    display:inline;
+}
+/* Field 5 (Number) */
+.field.number {
+    display:inline;
+    color: gray;
+    margin-left:0.5ex;
+}
+
+.cloze1 {color:blue;}
+.cloze2 {color:green;}
+.cloze3 {color:orange;}
+.cloze4 {color:purple;}
+.cloze5 {color:red;}
+.hint {color:gray;}
+.syntax {color:gray;font-size:smaller;}
+
+/* from Anki template 'MathCloze': */
+
+div.centered {
+  display:flex;
+  flex-direction:column;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-around;
+  min-width:100%;
+  margin:0 auto
+}
+
+.tabular { 
+   border-collapse:collapse;
+   width:auto
+}  
+
+.tabular td, .tabular th {
+  vertical-align:baseline;
+  text-align:left;
+  padding:.3em .6em;
+  empty-cells:show
+}
+
+td p:first-child, th p:first-child {
+  margin-top:0;
+  margin-bottom:0
+}
+
+td p,th p {
+  margin-top:1em;
+  margin-bottom:0
+}
+
