@@ -32,7 +32,7 @@
 
         The procedure is (where $\mathcal{M}_0$ is the null model with no predictors):
         \begin{enumerate}
-                \item For $j = 1, \ldots, p$:
+                \item For $k = 1, \ldots, p$:
                 \cloze{2}
                 \begin{enumerate}
                         \item Fit all ${p \choose k}$ models that contain exactly
@@ -250,11 +250,81 @@
                         + \lambda \sum_{j = 1}^p \beta_j^2,
                 \]\clend{}
         where \cloze{1}$\lambda \geq 0$ is some tuning parameter\clend{}.
+        Note that the second term, the \cloze{2} shrinkage penalyty\clend{}, is only
+        \cloze{2}applied to $\beta_1, \ldots, \beta_p$, not the intercept
+        $\beta_0$\clend{}.
   \field\ %back
   \field\ Linear Model Selection
   \field\ %type
   \field\ %note number
 \end{note}
 
+
+\begin{note}{itsl-616}
+  \field\ Linear Model Least Squares
+        \field\ The standard linear model least squares coefficient estimates are
+        \cloze{1}scale equivariant\clend{}: multiplying $X_j$ by a constant $c$
+        leads to \cloze{1}a scaling of the least squares coefficient estimates by a
+        factor of $1/c$, such that $X_j \hat{\beta_j}$ will remain the same\clend{}.
+  \field\ %back
+  \field\ Linear Model Selection
+  \field\ %type
+  \field\ %note number
+\end{note}
+
+\begin{note}{itsl-617}
+  \field\ Ridge Regression
+  \field\ Ridge regression coeﬀicient estimates can change sub-
+        stantially when \cloze{1}multiplying a given predictor by a constant (\textit{i.e.}\
+        they are not scale equivariant), and therefore it is best to apply ridge
+        regression after standardising the predictors\clend{}, \cloze{2}using the formula,
+        \[
+                \tilde{x}_{ij} = \frac{x_{ij}}{
+                        \sqrt{\frac{1}{n} \sum_{i = 1}^n (x_{ij} - \bar{x}_j)^2}}.
+        \]
+        \clend{}
+
+  \field\ %back
+  \field\ Linear Model Selection
+  \field\ %type
+  \field\ %note number
+\end{note}
+
+\begin{note}{itsl-618}
+  \field\ Ridge Regression Advantages
+  \field\ Ridge regression’s advantage over least squares is rooted in the
+        \cloze{1}bias-variance trade-off\clend{}. As \cloze{1}$\lambda$ increases, the flexibility of the ridge
+        regression fit decreases, leading to decreased variance but increased
+        bias\clend{}.
+
+        Ridge regression works best in scenarios \cloze{2}where the least squares solution
+        has high variance, \textit{e.g.}\ if $p \approx n$\clend{}. Ridge regression can
+        also perform in the \cloze{2}$p > n$ scenario, even though least squares does not
+        have a unique solution\clend{}.
+  \field\ %back
+  \field\ Linear Model Selection
+  \field\ %type
+  \field\ %note number
+\end{note}
+
+\begin{note}{itsl-619}
+  \field\ Ridge Regression Advantages
+        \field\ Ridge regression has substantial computational advantages \cloze{1}over best subset
+        selection. For any fixed value of $\lambda$, ridge regression only fits a
+        single model, and the model-fitting procedure can be performed quite
+        quickly\clend{}.
+
+        The computations required \cloze{2}for solving,
+        \[
+                \text{RSS} + \lambda \sum_{j = 1}^p \beta_j^2,
+        \]
+
+        simultaneously for all values of $\lambda$, are almost identical to those
+        for fitting a model using least squares\clend{}.
+  \field\ %back
+  \field\ Linear Model Selection
+  \field\ %type
+  \field\ %note number
+\end{note}
 
 \end{document}

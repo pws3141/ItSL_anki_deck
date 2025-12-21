@@ -29,7 +29,7 @@
      <p> ((FIELDSEPARATOR))  Best Subset Selection  ((FIELDSEPARATOR))   To perform best subset selection, we fit ((CLOZE1))a seperate least squares regression for each possible combination of the \(p\) predictors((CLEND)). </p>
 <p>The procedure is (where \(\mathcal{M}_0\) is the null model with no predictors): </p>
 <ol class="enumerate">
-  <li><p>For \(j = 1, \ldots , p\): ((CLOZE2)) </p>
+  <li><p>For \(k = 1, \ldots , p\): ((CLOZE2)) </p>
 <ol class="enumerate">
   <li><p>Fit all \({p \choose k}\) models that contain exactly \(k\) predictors; </p>
 </li>
@@ -108,7 +108,37 @@
      <div class="uuid">itsl-615</div>
       ((FIELDSEPARATOR))  Ridge Regression  ((FIELDSEPARATOR))  In linear models, ridge regression coefficients \(\beta ^R\) are chosen to minimise, ((CLOZE1)) <div class="displaymath" id="a0000000006">
   \[  \text{RSS} + \lambda \sum _{j = 1}^p \beta _j^2 = \sum _{i = 1}^n (y_i - \beta _0 - \sum _{j = 1}^p \beta _j x_{ij})^2 + \lambda \sum _{j = 1}^p \beta _j^2,  \]
-</div>((CLEND)) where ((CLOZE1))\(\lambda \geq 0\) is some tuning parameter((CLEND)).  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Linear Model Selection  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  
+</div>((CLEND)) where ((CLOZE1))\(\lambda \geq 0\) is some tuning parameter((CLEND)). Note that the second term, the ((CLOZE2)) shrinkage penalyty((CLEND)), is only ((CLOZE2))applied to \(\beta _1, \ldots , \beta _p\), not the intercept \(\beta _0\)((CLEND)).  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Linear Model Selection  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  
+</div> </p>
+<p><div class="note">
+     <div class="uuid">itsl-616</div>
+      ((FIELDSEPARATOR))  Linear Model Least Squares  ((FIELDSEPARATOR))  The standard linear model least squares coefficient estimates are ((CLOZE1))scale equivariant((CLEND)): multiplying \(X_j\) by a constant \(c\) leads to ((CLOZE1))a scaling of the least squares coefficient estimates by a factor of \(1/c\), such that \(X_j \hat{\beta _j}\) will remain the same((CLEND)).  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Linear Model Selection  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  
+</div> </p>
+<p><div class="note">
+     <div class="uuid">itsl-617</div>
+     <p> ((FIELDSEPARATOR))  Ridge Regression  ((FIELDSEPARATOR))  Ridge regression coeﬀicient estimates can change sub- stantially when ((CLOZE1))multiplying a given predictor by a constant (<i class="itshape">i.e.</i> they are not scale equivariant), and therefore it is best to apply ridge regression after standardising the predictors((CLEND)), ((CLOZE2))using the formula, </p>
+<div class="displaymath" id="a0000000007">
+  \[  \tilde{x}_{ij} = \frac{x_{ij}}{ \sqrt{\frac{1}{n} \sum _{i = 1}^n (x_{ij} - \bar{x}_j)^2}}.  \]
+</div>
+<p> ((CLEND)) </p>
+<p> ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Linear Model Selection  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  </p>
+
+</div> </p>
+<p><div class="note">
+     <div class="uuid">itsl-618</div>
+     <p> ((FIELDSEPARATOR))  Ridge Regression Advantages  ((FIELDSEPARATOR))  Ridge regression’s advantage over least squares is rooted in the ((CLOZE1))bias-variance trade-off((CLEND)). As ((CLOZE1))\(\lambda \) increases, the flexibility of the ridge regression fit decreases, leading to decreased variance but increased bias((CLEND)). </p>
+<p>Ridge regression works best in scenarios ((CLOZE2))where the least squares solution has high variance, <i class="itshape">e.g.</i> if \(p \approx n\)((CLEND)). Ridge regression can also perform in the ((CLOZE2))\(p {\gt} n\) scenario, even though least squares does not have a unique solution((CLEND)).  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Linear Model Selection  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  </p>
+
+</div> </p>
+<p><div class="note">
+     <div class="uuid">itsl-619</div>
+     <p> ((FIELDSEPARATOR))  Ridge Regression Advantages  ((FIELDSEPARATOR))  Ridge regression has substantial computational advantages ((CLOZE1))over best subset selection. For any fixed value of \(\lambda \), ridge regression only fits a single model, and the model-fitting procedure can be performed quite quickly((CLEND)). </p>
+<p>The computations required ((CLOZE2))for solving, </p>
+<div class="displaymath" id="a0000000008">
+  \[  \text{RSS} + \lambda \sum _{j = 1}^p \beta _j^2,  \]
+</div>
+<p>simultaneously for all values of \(\lambda \), are almost identical to those for fitting a model using least squares((CLEND)).  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Linear Model Selection  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  </p>
+
 </div> </p>
 
 </div> <!--main-text -->
