@@ -83,7 +83,7 @@
 <p><div class="note">
      <div class="uuid">itsl-610</div>
       ((FIELDSEPARATOR))  Bayesian Information Criterion  ((FIELDSEPARATOR))  For a least squares model with \(d\) predictors, the BIC is given by ((CLOZE1)) <div class="displaymath" id="a0000000004">
-  \[  \text{BIC} \propto \frac{1}{n} (RSS + \log (n) d \hat{\sigma }^2).  \]
+  \[  \text{BIC} \propto \frac{1}{n} (\text{RSS} + \log (n) d \hat{\sigma }^2).  \]
 </div> ((CLEND))  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Linear Model Selection  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  
 </div> </p>
 <p><div class="note">
@@ -121,13 +121,13 @@
   \[  \tilde{x}_{ij} = \frac{x_{ij}}{ \sqrt{\frac{1}{n} \sum _{i = 1}^n (x_{ij} - \bar{x}_j)^2}}.  \]
 </div>
 <p> ((CLEND)) </p>
-<p> ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Linear Model Selection  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  </p>
+<p> ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Shinkage Methods  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  </p>
 
 </div> </p>
 <p><div class="note">
      <div class="uuid">itsl-618</div>
      <p> ((FIELDSEPARATOR))  Ridge Regression Advantages  ((FIELDSEPARATOR))  Ridge regression’s advantage over least squares is rooted in the ((CLOZE1))bias-variance trade-off((CLEND)). As ((CLOZE1))\(\lambda \) increases, the flexibility of the ridge regression fit decreases, leading to decreased variance but increased bias((CLEND)). </p>
-<p>Ridge regression works best in scenarios ((CLOZE2))where the least squares solution has high variance, <i class="itshape">e.g.</i> if \(p \approx n\)((CLEND)). Ridge regression can also perform in the ((CLOZE2))\(p {\gt} n\) scenario, even though least squares does not have a unique solution((CLEND)).  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Linear Model Selection  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  </p>
+<p>Ridge regression works best in scenarios ((CLOZE2))where the least squares solution has high variance, <i class="itshape">e.g.</i> if \(p \approx n\)((CLEND)). Ridge regression can also perform in the ((CLOZE2))\(p {\gt} n\) scenario, even though least squares does not have a unique solution((CLEND)).  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Shinkage Methods  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  </p>
 
 </div> </p>
 <p><div class="note">
@@ -137,8 +137,38 @@
 <div class="displaymath" id="a0000000008">
   \[  \text{RSS} + \lambda \sum _{j = 1}^p \beta _j^2,  \]
 </div>
-<p>simultaneously for all values of \(\lambda \), are almost identical to those for fitting a model using least squares((CLEND)).  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Linear Model Selection  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  </p>
+<p>simultaneously for all values of \(\lambda \), are almost identical to those for fitting a model using least squares((CLEND)).  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Shinkage Methods  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  </p>
 
+</div> </p>
+<p><div class="note">
+     <div class="uuid">itsl-620</div>
+      ((FIELDSEPARATOR))  The Lasso  ((FIELDSEPARATOR))  The lasso coefficients, \(\hat{\beta }_\lambda ^L\), minimises the quantity, ((CLOZE1)) <div class="displaymath" id="a0000000009">
+  \[  \text{RSS} + \lambda \sum _{j = 1}^p |\beta _j| = \sum _{i = 1}^n \Bigl(y_i - \beta _0 - \sum _{j = 1}^p \beta _j x_{ij}\Bigr)^2 + \lambda \sum _{j = 1}^p |\beta _j|.  \]
+</div> ((CLEND))  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Shinkage Methods  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  
+</div> </p>
+<p><div class="note">
+     <div class="uuid">itsl-621</div>
+      ((FIELDSEPARATOR))  Ridge vs. Lasso  ((FIELDSEPARATOR))  The only difference ((CLOZE1))between the quantity to minimise in ridge and lasso is the penalty term – ridge uses \(\beta _j^2\) and lasso \(|\beta _j|\)((CLEND)). That is, ridge regression uses an ((CLOZE1))\(l_2\) penatly term, and lasso uses \(l_1\)((CLEND)).  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Shinkage Methods  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  
+</div> </p>
+<p><div class="note">
+     <div class="uuid">itsl-622</div>
+     <p> ((FIELDSEPARATOR))  The Lasso  ((FIELDSEPARATOR))  The \(l_1\) penalty has the effect of ((CLOZE1))forcing some coefficient estimates to be exactly equal to zero when the tuning parameter \(\lambda \) is sufficiently large. Hence, lasso performs variable selection((CLEND)).<br />The lasso yields ((CLOZE2))sparse models which are often much easier to interprest than those produced using ridge regression((CLEND)). </p>
+<p> ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Shinkage Methods  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  </p>
+
+</div> </p>
+<p><div class="note">
+     <div class="uuid">itsl-623</div>
+      ((FIELDSEPARATOR))  Another formulation for Ridge Regression and the Lasso  ((FIELDSEPARATOR))  The lasso and ridge regression coefficients estimates solve the problems, ((CLOZE1)) <div class="displaymath" id="a0000000010">
+  \[  \min _\beta \Biggl(\sum _{i = 1}^n \Bigl(y_i - \beta _0 - \sum _{j = 1}^p \beta _j x_{ij} \Bigr)^2 \Biggr) \quad \text{s.t.} \quad \sum _{j = 1}^p |\beta _j| \leq s  \]
+</div> ((CLEND)) and, ((CLOZE1)) <div class="displaymath" id="a0000000011">
+  \[  \min _\beta \Biggl(\sum _{i = 1}^n \Bigl(y_i - \beta _0 - \sum _{j = 1}^p \beta _j x_{ij} \Bigr)^2 \Biggr) \quad \text{s.t.} \quad \sum _{j = 1}^p \beta _j^2 \leq s,  \]
+</div> ((CLEND)) respectively.  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Shinkage Methods  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  
+</div> </p>
+<p><div class="note">
+     <div class="uuid">itsl-624</div>
+      ((FIELDSEPARATOR))  The Lasso  ((FIELDSEPARATOR))  Consider the formulation <div class="displaymath" id="a0000000012">
+  \[  \min _\beta (\text{RSS}) \quad \text{s.t.} \quad \sum _{j = 1}^p |\beta _j| \leq s.  \]
+</div> When \(p = 2\), ((CLOZE1))this indicates that the lasso coefficient estimates have the smallest RSS out of all points that lie within the diamond defined by \(|\beta _1| + |\beta _2| \leq s\)((CLEND)).<br />Therefore, the lasso regression coeﬀicient estimates are given by the ((CLOZE1))first point at which an ellipse centered around \(\hat{\beta }\) contacts the constraint region((CLEND)). As the lasso constraint has ((CLOZE1))corners at each of the axes, therefore the ellipse will often intersect the constraint region at an axis (where some of the coefficients will equal zero)((CLEND)).  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  Shinkage Methods  ((FIELDSEPARATOR))   ((FIELDSEPARATOR))  
 </div> </p>
 
 </div> <!--main-text -->

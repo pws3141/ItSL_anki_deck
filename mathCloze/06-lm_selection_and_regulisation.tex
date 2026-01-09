@@ -164,7 +164,7 @@
   \field\ For a least squares model with $d$ predictors, the BIC is given by
         \cloze{1}
         \[
-        \text{BIC} \propto \frac{1}{n} (RSS + \log(n) d \hat{\sigma}^2).
+        \text{BIC} \propto \frac{1}{n} (\text{RSS} + \log(n) d \hat{\sigma}^2).
         \]
         \clend\
   \field\ %back
@@ -285,7 +285,7 @@
         \clend{}
 
   \field\ %back
-  \field\ Linear Model Selection
+  \field\ Shinkage Methods
   \field\ %type
   \field\ %note number
 \end{note}
@@ -302,7 +302,7 @@
         also perform in the \cloze{2}$p > n$ scenario, even though least squares does not
         have a unique solution\clend{}.
   \field\ %back
-  \field\ Linear Model Selection
+  \field\ Shinkage Methods
   \field\ %type
   \field\ %note number
 \end{note}
@@ -322,7 +322,98 @@
         simultaneously for all values of $\lambda$, are almost identical to those
         for fitting a model using least squares\clend{}.
   \field\ %back
-  \field\ Linear Model Selection
+  \field\ Shinkage Methods
+  \field\ %type
+  \field\ %note number
+\end{note}
+
+\begin{note}{itsl-620}
+  \field\ The Lasso
+        \field\ The lasso coefficients, $\hat{\beta}_\lambda^L$, minimises the
+        quantity,
+        \cloze{1}
+        \[
+        \text{RSS} + \lambda \sum_{j = 1}^p |\beta_j| =
+                \sum_{i = 1}^n \Bigl(y_i - \beta_0 - \sum_{j = 1}^p \beta_j
+        x_{ij}\Bigr)^2
+                    + \lambda \sum_{j = 1}^p |\beta_j|.
+        \]
+        \clend{}
+  \field\ %back
+  \field\ Shinkage Methods
+  \field\ %type
+  \field\ %note number
+\end{note}
+
+\begin{note}{itsl-621}
+  \field\ Ridge vs. Lasso
+        \field\ The only difference \cloze{1}between the quantity to minimise in ridge and lasso is
+        the penalty term -- ridge uses $\beta_j^2$ and lasso $|\beta_j|$\clend{}. 
+        That is, ridge regression uses an \cloze{1}$l_2$ penatly term, and
+        lasso uses $l_1$\clend{}.
+  \field\ %back
+  \field\ Shinkage Methods
+  \field\ %type
+  \field\ %note number
+\end{note}
+
+\begin{note}{itsl-622}
+  \field\ The Lasso
+        \field\ The $l_1$ penalty has the effect of \cloze{1}forcing some coefficient estimates to
+  be exactly equal to zero when the tuning parameter $\lambda$ is sufficiently
+        large. Hence, lasso performs variable selection\clend{}.\\
+        The lasso yields \cloze{2}sparse models which are often much easier to interprest
+        than those produced using ridge regression\clend{}.
+        
+  \field\ %back
+  \field\ Shinkage Methods
+  \field\ %type
+  \field\ %note number
+\end{note}
+
+\begin{note}{itsl-623}
+  \field\ Another formulation for Ridge Regression and the Lasso
+  \field\ The lasso and ridge regression coefficients estimates solve the problems,
+        \cloze{1}
+        \[
+        \min_\beta \Biggl(\sum_{i = 1}^n \Bigl(y_i - \beta_0 - \sum_{j =
+        1}^p \beta_j x_{ij} \Bigr)^2 \Biggr) \quad
+                \text{s.t.} \quad \sum_{j = 1}^p |\beta_j| \leq s
+        \]
+        \clend{}
+        and,
+        \cloze{1}
+        \[
+        \min_\beta \Biggl(\sum_{i = 1}^n \Bigl(y_i - \beta_0 - \sum_{j =
+        1}^p \beta_j x_{ij} \Bigr)^2 \Biggr) \quad
+                \text{s.t.} \quad \sum_{j = 1}^p \beta_j^2 \leq s,
+        \]
+        \clend{}
+        respectively.
+  \field\ %back
+  \field\ Shinkage Methods
+  \field\ %type
+  \field\ %note number
+\end{note}
+
+\begin{note}{itsl-624}
+  \field\ The Lasso
+  \field\ Consider the formulation
+        \[
+                \min_\beta (\text{RSS}) \quad
+                \text{s.t.} \quad \sum_{j = 1}^p |\beta_j| \leq s.
+        \]
+        When $p = 2$, \cloze{1}this indicates that the lasso coefficient estimates
+        have the smallest RSS out of all points that lie within the diamond defined
+        by $|\beta_1| + |\beta_2| \leq s$\clend{}.\\
+        Therefore, the lasso regression coeﬀicient estimates are given by the
+        \cloze{1}first point at which an ellipse centered around $\hat{\beta}$
+        contacts the constraint region\clend{}.
+        As the lasso constraint has \cloze{1}corners at each of the axes, therefore
+        the ellipse will often intersect the constraint region at an axis (where
+        some of the coefficients will equal zero)\clend{}.
+  \field\ %back
+  \field\ Shinkage Methods
   \field\ %type
   \field\ %note number
 \end{note}
